@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Gaia Matrix Technologies AG" lang="en">
+  <script is:inline>
+    (function () {
+      try {
+        const savedLang = localStorage.getItem('preferred-lang');
+        if (savedLang === 'de') {
+          window.location.replace('/de');
+          return;
+        } else if (savedLang === 'en') {
+          window.location.replace('/en');
+          return;
+        }
+
+        const userLangs = navigator.languages || [navigator.language || ''];
+        const isGerman = userLangs.some(function (lang) {
+          return lang.toLowerCase().startsWith('de');
+        });
+
+        if (isGerman) {
+          window.location.replace('/de');
+        } else {
+          window.location.replace('/en');
+        }
+      } catch (e) {
+        window.location.replace('/en');
+      }
+    })();
+  </script>
+
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=/en" />
+  </noscript>
+
+  <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #94a3b8; font-family: sans-serif;">
+    <p>Redirecting to your language...</p>
+  </div>
+</Layout>

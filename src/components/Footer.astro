@@ -1,0 +1,187 @@
+---
+interface Props {
+  currentLang?: 'en' | 'de';
+}
+
+const { currentLang = 'en' } = Astro.props;
+const isDe = currentLang === 'de';
+
+const homePath = `/${currentLang}`;
+
+const navigationLinks = isDe
+  ? [
+      { href: `${homePath}#vision`, label: 'Vision' },
+      { href: `${homePath}#technologies`, label: 'Technologien' },
+      { href: `${homePath}#independence`, label: 'Energieunabhängigkeit' },
+      { href: `${homePath}#nda`, label: 'Technische Evidenz' },
+      { href: `${homePath}#contact`, label: 'Kontakt' },
+    ]
+  : [
+      { href: `${homePath}#vision`, label: 'Vision' },
+      { href: `${homePath}#technologies`, label: 'Technologies' },
+      { href: `${homePath}#independence`, label: 'Energy Independence' },
+      { href: `${homePath}#nda`, label: 'Technical Evidence' },
+      { href: `${homePath}#contact`, label: 'Contact' },
+    ];
+
+const legalLinks = isDe
+  ? [
+      { href: `/${currentLang}/impressum`, label: 'Impressum' },
+      { href: `/${currentLang}/legal`, label: 'Datenschutzerklärung' },
+    ]
+  : [
+      { href: `/${currentLang}/impressum`, label: 'Impressum' },
+      { href: `/${currentLang}/legal`, label: 'Privacy Policy' },
+    ];
+---
+
+<footer class="footer-extensible">
+  <div class="content">
+    <div class="footer-grid">
+      <!-- Brand Column -->
+      <div class="footer-col brand-col">
+        <a class="brand" href={`${homePath}#top`}>
+          <span class="brand-mark" aria-hidden="true"></span>
+          Gaia Matrix Technologies
+        </a>
+        <p class="brand-desc">
+          {isDe
+            ? "GMT entwickelt nanotechnologische Energiesysteme für Photovoltaik, Leuchttechnologie, Heizung und Speicherung."
+            : "GMT develops nanotechnology-based energy systems for photovoltaics, lighting, heating, and energy storage."}
+        </p>
+      </div>
+
+      <!-- Navigation Column -->
+      <div class="footer-col">
+        <span class="footer-heading">{isDe ? 'Navigation' : 'Navigation'}</span>
+        <ul class="footer-links">
+          {navigationLinks.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal & Compliance Column -->
+      <div class="footer-col">
+        <span class="footer-heading">{isDe ? 'Rechtliches' : 'Legal & Compliance'}</span>
+        <ul class="footer-links">
+          {legalLinks.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Location Column -->
+      <div class="footer-col">
+        <span class="footer-heading">{isDe ? 'Standort' : 'Location'}</span>
+        <p class="footer-location">
+          GMT Gaia Matrix Technologies AG<br />
+          Max-Högger-Strasse 6<br />
+          8048 Zürich, Switzerland
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} Gaia Matrix Technologies AG / Zurich</span>
+      <span>
+        {isDe ? "Energieunabhängigkeit / Nachhaltigkeit / Zukunft" : "Energy Independence / Sustainability / Future"}
+      </span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-extensible {
+    border-top: 1px solid var(--divider);
+    padding: 64px 0 36px;
+    background: rgba(4, 8, 14, 0.6);
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+
+  .brand-col {
+    padding-right: 20px;
+  }
+
+  .brand-desc {
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin-top: 16px;
+    max-width: 320px;
+  }
+
+  .footer-heading {
+    color: var(--cyan);
+    display: block;
+    font: 600 0.64rem/1.4 var(--mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    color: var(--muted-soft);
+    font: 500 0.72rem/1.4 var(--mono);
+    text-decoration: none;
+    transition: color var(--ease);
+  }
+
+  .footer-links a:hover {
+    color: var(--cyan-hot);
+  }
+
+  .footer-location {
+    color: var(--muted-soft);
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--divider);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font: 500 0.61rem/1.6 var(--mono);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+    }
+  }
+</style>
+

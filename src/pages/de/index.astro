@@ -1,88 +1,28 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Gaia Matrix Technologies AG entwickelt nanotechnologische Energiesysteme für Photovoltaik, Leuchttechnologie, Heizung und Energiespeicherung.">
-  <meta name="theme-color" content="#04080e">
-  <title>Gaia Matrix Technologies AG | Energie neu gedacht</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-</head>
+---
+import Layout from '../../layouts/Layout.astro';
+import Backdrop from '../../components/Backdrop.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
 
-<body>
-
-  <div class="backdrop" aria-hidden="true">
-    <div class="grid"></div>
-
-    <div class="columns">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <div class="orb green"></div>
-    <div class="orb cyan"></div>
-  </div>
-
+<Layout title="Gaia Matrix Technologies AG | Energie neu gedacht" lang="de">
+  <Backdrop />
 
   <div class="page" id="top">
-
-    <!-- Navigation -->
-    <header class="nav">
-
-      <div class="content nav-inner">
-
-        <a class="brand" href="#top">
-          <span class="brand-mark" aria-hidden="true"></span>
-          Gaia Matrix Technologies
-        </a>
-
-        <ul class="nav-links">
-          <li><a href="#vision">Vision</a></li>
-          <li><a href="#technologies">Technologien</a></li>
-          <li><a href="#independence">Energieunabhängigkeit</a></li>
-          <li><a href="#nda">Technische Evidenz</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-
-        <nav class="language-switcher" aria-label="Sprache auswählen">
-          <a href="index7b-en.html" hreflang="en" lang="en">EN</a>
-          <span aria-hidden="true">/</span>
-          <a href="index7b.html" aria-current="page" hreflang="de" lang="de">DE</a>
-        </nav>
-
-      </div>
-
-    </header>
-
+    <Header currentLang="de" />
 
     <main>
-
       <!-- Hero -->
       <section class="section hero" id="vision">
-
         <div class="content">
-
           <div class="hero-layout">
-
             <div class="hero-copy">
-
               <p class="meta">
                 Gaia Matrix Technologies / 01
               </p>
 
               <h1>
-                Um Zukunft zu gestalten, muss man eine klare Vorstellung davon haben.
-                Diese haben wir.
+                Die Gestaltung der Zukunft der Energiesouveränität erfordert eine klare Vorstellung.
               </h1>
 
               <p class="hero-lede">
@@ -93,22 +33,17 @@
               </p>
 
               <div class="actions">
-
                 <a class="action primary" href="#technologies">
                   Unsere Technologien
                 </a>
 
                 <a class="action ghost" href="#nda">
-                  Technische Evidenz →
+                  Technische Evidenz &rarr;
                 </a>
-
               </div>
-
             </div>
 
-
             <div class="stats">
-
               <div class="stat">
                 <strong>2050</strong>
                 <span>
@@ -129,16 +64,11 @@
                   recycelbare Ausrichtung unserer Produkte
                 </span>
               </div>
-
             </div>
-
           </div>
 
-
           <div class="instrument">
-
             <div class="instrument-layout">
-
               <span class="instrument-label">
                 Gaia Matrix Technologies<br>
                 Nanotechnologie / Energie / Zukunft
@@ -155,25 +85,16 @@
                 dezentral<br>
                 autark
               </span>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Vision -->
       <section class="section band">
-
         <div class="content">
-
           <div class="section-head">
-
             <div>
-
               <p class="meta">
                 Unsere Vision / 02
               </p>
@@ -181,7 +102,6 @@
               <h2>
                 Die Ära einer neuen grünen Form der Energiegewinnung.
               </h2>
-
             </div>
 
             <p>
@@ -192,14 +112,10 @@
               interessierten Parteien im Rahmen eines NDA zur Verfügung
               gestellt werden.
             </p>
-
           </div>
 
-
           <div class="items three">
-
             <article class="item">
-
               <span class="meta">
                 01 / Nachhaltigkeit
               </span>
@@ -212,12 +128,9 @@
                 Unsere Systeme sind auf Nachhaltigkeit, Umweltfreundlichkeit,
                 Langlebigkeit, Effizienz und einen geringen CO₂-Ausstoß ausgerichtet.
               </p>
-
             </article>
 
-
             <article class="item">
-
               <span class="meta">
                 02 / Technologie
               </span>
@@ -232,12 +145,9 @@
                 die Energiegewinnung. Technische Details werden auf Anfrage
                 im geschützten Rahmen vertieft.
               </p>
-
             </article>
 
-
             <article class="item">
-
               <span class="meta">
                 03 / Unabhängigkeit
               </span>
@@ -250,25 +160,16 @@
                 Dezentrale und autarke Energiesysteme schaffen neue Möglichkeiten
                 für Gebäude, Infrastruktur und unseren Alltag.
               </p>
-
             </article>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Technologies -->
       <section class="section" id="technologies">
-
         <div class="content">
-
           <div class="platform">
-
             <div class="platform-intro">
-
               <p class="meta">
                 Technologien / 03
               </p>
@@ -288,12 +189,9 @@
                 weitere Evidenz werden qualifizierten Interessenten im Rahmen
                 eines NDA zugänglich gemacht.
               </p>
-
             </div>
 
-
             <div class="list">
-
               <div class="row">
                 <span>01 / Photovoltaik</span>
                 <strong>
@@ -335,25 +233,16 @@
                   Langlebig, schadstofffrei und vollständig recycelbar
                 </strong>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Applications -->
       <section class="section" id="applications">
-
         <div class="content">
-
           <div class="section-head">
-
             <div>
-
               <p class="meta">
                 Anwendungen / 04
               </p>
@@ -361,7 +250,6 @@
               <h2>
                 Energie wird Teil unserer Umgebung.
               </h2>
-
             </div>
 
             <p>
@@ -369,14 +257,10 @@
               Infrastruktur und die Art, wie wir wohnen und arbeiten,
               nachhaltig zu verändern.
             </p>
-
           </div>
 
-
           <div class="items four">
-
             <article class="item">
-
               <span class="meta">
                 A / Gebäude
               </span>
@@ -389,12 +273,9 @@
                 Photovoltaik und Energiespeicherung ermöglichen Gebäude,
                 die ihren Energiebedarf weitgehend eigenständig decken können.
               </p>
-
             </article>
 
-
             <article class="item">
-
               <span class="meta">
                 B / Gewerbe
               </span>
@@ -407,12 +288,9 @@
                 Dezentrale Energieversorgung für Unternehmen und gewerbliche
                 Gebäude mit Fokus auf Effizienz und langfristige Kostenreduktion.
               </p>
-
             </article>
 
-
             <article class="item">
-
               <span class="meta">
                 C / Infrastruktur
               </span>
@@ -425,12 +303,9 @@
                 Energieversorgung wird unabhängiger von zentralen Strukturen
                 und damit resilienter gegenüber Krisen und Engpässen.
               </p>
-
             </article>
 
-
             <article class="item">
-
               <span class="meta">
                 D / Alltag
               </span>
@@ -443,25 +318,16 @@
                 Unsere Produkte sollen ihren Einsatz dort finden, wo wir
                 leben, arbeiten und Energie täglich benötigen.
               </p>
-
             </article>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Independence -->
       <section class="section" id="independence">
-
         <div class="content">
-
           <div class="comparison">
-
             <div class="comparison-copy">
-
               <p class="meta">
                 Energieunabhängigkeit / 05
               </p>
@@ -488,14 +354,10 @@
                 Leistungsfähigkeit der Systeme können nach entsprechender
                 Qualifizierung und unter NDA eingesehen werden.
               </p>
-
             </div>
 
-
             <div class="table">
-
               <table>
-
                 <thead>
                   <tr>
                     <th>Dimension</th>
@@ -505,7 +367,6 @@
                 </thead>
 
                 <tbody>
-
                   <tr>
                     <td>Versorgung</td>
                     <td class="positive">
@@ -545,27 +406,17 @@
                       Nachhaltige Nutzung
                     </td>
                   </tr>
-
                 </tbody>
-
               </table>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Quote -->
       <section class="section">
-
         <div class="content">
-
           <div class="quote">
-
             <blockquote>
               „Unsere Umwelt, unsere Infrastruktur, unsere Häuser sowie unsere
               Form des Wohnens werden sich durch diese Energiesysteme positiv verändern.“
@@ -574,23 +425,15 @@
             <cite>
               Gaia Matrix Technologies AG / Zukunftsvision
             </cite>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Sustainability -->
       <section class="section band">
-
         <div class="content">
-
           <div class="section-head">
-
             <div>
-
               <p class="meta">
                 Material &amp; Effizienz / 06
               </p>
@@ -598,7 +441,6 @@
               <h2>
                 Nachhaltigkeit beginnt bei den Materialien.
               </h2>
-
             </div>
 
             <p>
@@ -607,14 +449,10 @@
               einen geringen CO₂-Ausstoß sowie vollständige Recyclingfähigkeit
               ausgerichtet.
             </p>
-
           </div>
 
-
           <div class="items three">
-
             <article class="item">
-
               <span class="meta">
                 01 / Ressourcen
               </span>
@@ -627,12 +465,9 @@
                 Für die Herstellung unserer Produkte werden weder kritische
                 noch seltene Erden eingesetzt.
               </p>
-
             </article>
 
-
             <article class="item">
-
               <span class="meta">
                 02 / Kreislauf
               </span>
@@ -645,12 +480,9 @@
                 Unsere Systeme sind vollständig recycelbar und damit auf
                 einen nachhaltigeren Produktlebenszyklus ausgerichtet.
               </p>
-
             </article>
 
-
             <article class="item">
-
               <span class="meta">
                 03 / Wirtschaftlichkeit
               </span>
@@ -663,25 +495,16 @@
                 Die Produkte sind preiswert und auf eine Amortisation des
                 investierten Betrags innerhalb weniger Jahre ausgelegt.
               </p>
-
             </article>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Partners -->
       <section class="section">
-
         <div class="content">
-
           <div class="opportunity-layout">
-
             <div class="opportunity-copy">
-
               <p class="meta">
                 Netzwerk / 07
               </p>
@@ -696,33 +519,22 @@
                 Netzwerkes werden wollen, können wir gemeinsam die Zukunft
                 unserer und nachfolgender Generationen sichern.
               </p>
-
             </div>
 
             <div class="opportunity-action">
-
               <a class="action secondary" href="#nda">
-                Technische Unterlagen →
+                Technische Unterlagen &rarr;
               </a>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Future -->
       <section class="section opportunity">
-
         <div class="content">
-
           <div class="opportunity-layout">
-
             <div class="opportunity-copy">
-
               <p class="meta">
                 Zukunft / 08
               </p>
@@ -752,33 +564,22 @@
                 Weiterführende technische Dokumentation und Evidenz sind
                 für qualifizierte Interessenten nach Abschluss eines NDA verfügbar.
               </p>
-
             </div>
 
             <div class="opportunity-action">
-
               <a class="action primary" href="#nda">
                 Zugang anfragen
               </a>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- NDA / Technical Evidence -->
       <section class="section" id="nda">
-
         <div class="content">
-
           <div class="nda">
-
             <div class="nda-intro">
-
               <p class="meta">
                 Technische Evidenz / 09
               </p>
@@ -793,80 +594,56 @@
                 technische Informationen und Nachweise im geschützten Rahmen
                 zur Verfügung.
               </p>
-
             </div>
 
-
             <div class="points">
-
               <div class="point">
-
                 <span>
                   01 / Technische Daten
                 </span>
-
                 <strong>
                   Weiterführende technische Spezifikationen und Produktinformationen
                   können nach Prüfung der Anfrage bereitgestellt werden.
                 </strong>
-
               </div>
 
-
               <div class="point">
-
                 <span>
                   02 / Nachweise
                 </span>
-
                 <strong>
                   Verfügbare Test-, Prüf-, Zertifizierungs- und Validierungsunterlagen
                   können im Rahmen des geschützten Informationsprozesses eingesehen werden.
                 </strong>
-
               </div>
 
-
               <div class="point">
-
                 <span>
                   03 / Geschäftsmodell
                 </span>
-
                 <strong>
                   Qualifizierte Interessenten können vertiefende Informationen
                   zu Anwendungen, Partnerschaften und kommerzieller Entwicklung erhalten.
                 </strong>
-
               </div>
 
-
               <div class="point">
-
                 <span>
                   04 / Vertraulichkeit
                 </span>
-
                 <strong>
                   Der Zugang zu vertraulichen Informationen erfolgt nach
                   entsprechender Prüfung und, soweit erforderlich, auf Basis
                   einer Vertraulichkeitsvereinbarung (NDA).
                 </strong>
-
               </div>
-
             </div>
-
           </div>
-
 
           <!-- Form -->
           <div class="form-area">
-
             <div class="form-head">
-
               <div>
-
                 <p class="meta">
                   Zugang anfragen
                 </p>
@@ -874,7 +651,6 @@
                 <h2>
                   Lassen Sie uns ins Gespräch kommen.
                 </h2>
-
               </div>
 
               <p>
@@ -882,9 +658,7 @@
                 und Ihrem Interesse mit. Wir prüfen Ihre Anfrage und melden uns
                 anschließend persönlich bei Ihnen.
               </p>
-
             </div>
-
 
             <form
               class="form"
@@ -892,13 +666,10 @@
               action="#"
               method="POST"
             >
-
               <div class="field">
-
                 <label for="name">
                   Name *
                 </label>
-
                 <input
                   id="name"
                   name="name"
@@ -906,16 +677,12 @@
                   autocomplete="name"
                   required
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="company">
                   Unternehmen / Organisation *
                 </label>
-
                 <input
                   id="company"
                   name="company"
@@ -923,16 +690,12 @@
                   autocomplete="organization"
                   required
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="email">
                   E-Mail *
                 </label>
-
                 <input
                   id="email"
                   name="email"
@@ -940,32 +703,24 @@
                   autocomplete="email"
                   required
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="country">
                   Land
                 </label>
-
                 <input
                   id="country"
                   name="country"
                   type="text"
                   autocomplete="country-name"
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="type">
                   Organisationstyp *
                 </label>
-
                 <select
                   id="type"
                   name="organisation_type"
@@ -993,16 +748,12 @@
                     Sonstige
                   </option>
                 </select>
-
               </div>
 
-
               <div class="field">
-
                 <label for="interest">
                   Interessensbereich *
                 </label>
-
                 <select
                   id="interest"
                   name="interest"
@@ -1033,16 +784,12 @@
                     Kommerzialisierung
                   </option>
                 </select>
-
               </div>
 
-
               <div class="field">
-
                 <label for="investment">
                   Investitions- / Kooperationsinteresse
                 </label>
-
                 <select
                   id="investment"
                   name="investment_interest"
@@ -1066,16 +813,12 @@
                     Kommerzielle Zusammenarbeit
                   </option>
                 </select>
-
               </div>
 
-
               <div class="field">
-
                 <label for="website">
                   Website
                 </label>
-
                 <input
                   id="website"
                   name="website"
@@ -1083,27 +826,20 @@
                   autocomplete="url"
                   placeholder="https://"
                 >
-
               </div>
 
-
               <div class="field full">
-
                 <label for="message">
                   Nachricht
                 </label>
-
                 <textarea
                   id="message"
                   name="message"
                   placeholder="Beschreiben Sie kurz Ihr Interesse oder Ihre geplante Zusammenarbeit."
                 ></textarea>
-
               </div>
 
-
               <div class="check">
-
                 <input
                   id="nda-consent"
                   name="nda_interest"
@@ -1111,19 +847,15 @@
                   value="yes"
                   required
                 >
-
                 <label for="nda-consent">
                   Ich möchte Informationen zu den verfügbaren technischen
                   Unterlagen und Nachweisen erhalten und verstehe, dass
                   vertrauliche Informationen gegebenenfalls erst nach
                   Abschluss einer NDA bereitgestellt werden.
                 </label>
-
               </div>
 
-
               <div class="submit">
-
                 <button
                   class="action primary"
                   type="submit"
@@ -1137,27 +869,17 @@
                   Datenschutzerklärung und passen Sie diesen Hinweis an Ihre
                   tatsächliche Datenverarbeitung an.
                 </p>
-
               </div>
-
             </form>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Contact -->
       <section class="section" id="contact">
-
         <div class="content">
-
           <div class="section-head">
-
             <div>
-
               <p class="meta">
                 Kontakt / 10
               </p>
@@ -1165,7 +887,6 @@
               <h2>
                 Die Richtung ist klar und steht fest.
               </h2>
-
             </div>
 
             <p>
@@ -1173,14 +894,10 @@
               internationalen Netzwerks werden möchten, freuen wir uns
               auf Ihre Kontaktaufnahme.
             </p>
-
           </div>
 
-
           <div class="contacts">
-
             <article class="contact">
-
               <span class="contact-role">
                 CEO und Co-Gründerin
               </span>
@@ -1195,31 +912,22 @@
                 8048 Zürich<br>
                 Schweiz
               </p>
-
             </article>
-
           </div>
-
         </div>
-
       </section>
-
 
       <!-- Impressum -->
       <section class="section legal" id="impressum">
-
         <div class="content">
-
           <div class="legal-grid">
-
             <div class="legal-copy">
-
               <p class="meta">
                 Impressum / 11
               </p>
 
               <h2>
-                Impressum
+                Rechtliches &amp; Impressum
               </h2>
 
               <p>
@@ -1229,91 +937,20 @@
                 Schweiz
               </p>
 
-              <p>
-                Weitere Angaben zum Unternehmen, zur verantwortlichen Stelle
-                und zu rechtlichen Informationen werden hier ergänzt.
-              </p>
-
-              <p class="text-mono-small">
-                Impressum / Rechtliche Angaben folgen.
-              </p>
-
+              <div class="actions" style="margin-top: 24px;">
+                <a class="action secondary" href="/de/impressum">
+                  Impressum &amp; Unternehmensangaben &rarr;
+                </a>
+                <a class="action ghost" href="/de/legal">
+                  Datenschutzerklärung &rarr;
+                </a>
+              </div>
             </div>
-
           </div>
-
         </div>
-
       </section>
-
     </main>
 
-
-    <!-- Footer -->
-    <footer class="footer">
-
-      <div class="content">
-
-        <div class="footer-inner">
-
-          <span>
-            Gaia Matrix Technologies AG / Zürich
-          </span>
-
-          <span>
-            Energieunabhängigkeit / Nachhaltigkeit / Zukunft
-          </span>
-
-        </div>
-
-      </div>
-
-    </footer>
-
+    <Footer currentLang="de" />
   </div>
-
-
-  <div class="toast" id="toast" role="status">
-    Anfrage wurde vorgemerkt.
-  </div>
-
-
-  <script>
-    const toast = document.getElementById("toast");
-    const investorForm = document.getElementById("investor-form");
-    const links = document.querySelectorAll('a[href^="#"]');
-    let toastTimeout;
-
-    function showToast(message, duration = 3000) {
-      window.clearTimeout(toastTimeout);
-
-      toast.textContent = message;
-      toast.classList.add("visible");
-
-      toastTimeout = window.setTimeout(() => {
-        toast.classList.remove("visible");
-      }, duration);
-    }
-
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        const target = link.getAttribute("href");
-
-        if (target === "#nda" || target === "#contact") {
-          showToast("Bereich geöffnet.");
-        }
-      });
-    });
-
-    investorForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      showToast(
-        "Vielen Dank. Ihre Anfrage wurde vorgemerkt.",
-        3500
-      );
-    });
-  </script>
-
-</body>
-</html>
+</Layout>

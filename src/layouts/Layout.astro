@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+}
+
+const {
+  title = "Gaia Matrix Technologies AG | Energie neu gedacht",
+  description = "Gaia Matrix Technologies AG entwickelt nanotechnologische Energiesysteme für Photovoltaik, Leuchttechnologie, Heizung und Energiespeicherung.",
+  lang = "de",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="description" content={description}>
+  <meta name="theme-color" content="#04080e">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+</head>
+<body>
+  <slot />
+
+  <div class="toast" id="toast" role="status">
+    Your request has been noted.
+  </div>
+
+  <script>
+    const toast = document.getElementById("toast");
+    const investorForm = document.getElementById("investor-form");
+    const links = document.querySelectorAll('a[href^="#"]');
+    let toastTimeout: number | undefined;
+
+    function showToast(message: string, duration = 3000) {
+      if (!toast) return;
+      window.clearTimeout(toastTimeout);
+
+      toast.textContent = message;
+      toast.classList.add("visible");
+
+      toastTimeout = window.setTimeout(() => {
+        toast.classList.remove("visible");
+      }, duration);
+    }
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        const target = link.getAttribute("href");
+
+        if (target === "#nda" || target === "#contact") {
+          showToast("Section opened.");
+        }
+      });
+    });
+
+    if (investorForm) {
+      investorForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        showToast(
+          "Thank you. Your request has been noted.",
+          3500
+        );
+      });
+    }
+  </script>
+</body>
+</html>

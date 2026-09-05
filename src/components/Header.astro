@@ -1,0 +1,63 @@
+---
+interface Props {
+  currentLang?: 'en' | 'de';
+  pagePath?: string;
+}
+
+const { currentLang = 'en', pagePath } = Astro.props;
+
+const isDe = currentLang === 'de';
+const homePath = `/${currentLang}`;
+
+const navLinks = isDe
+  ? [
+      { href: `${homePath}#vision`, label: 'Vision' },
+      { href: `${homePath}#technologies`, label: 'Technologien' },
+      { href: `${homePath}#independence`, label: 'Energieunabhängigkeit' },
+      { href: `${homePath}#nda`, label: 'Technische Evidenz' },
+      { href: `${homePath}#contact`, label: 'Kontakt' },
+    ]
+  : [
+      { href: `${homePath}#vision`, label: 'Vision' },
+      { href: `${homePath}#technologies`, label: 'Technologies' },
+      { href: `${homePath}#independence`, label: 'Energy Independence' },
+      { href: `${homePath}#nda`, label: 'Technical Evidence' },
+      { href: `${homePath}#contact`, label: 'Contact' },
+    ];
+
+const subPath = pagePath ? pagePath.replace(/^\/(en|de)/, '') : '';
+const enLink = `/en${subPath}`;
+const deLink = `/de${subPath}`;
+---
+
+<header class="nav">
+  <div class="content nav-inner">
+    <a class="brand" href={`${homePath}#top`}>
+      <span class="brand-mark" aria-hidden="true"></span>
+      Gaia Matrix Technologies
+    </a>
+
+    <ul class="nav-links">
+      {navLinks.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+
+    <nav class="language-switcher" aria-label={isDe ? "Sprache auswählen" : "Select language"}>
+      <a href={enLink} aria-current={!isDe ? "page" : undefined} hreflang="en" lang="en" data-set-lang="en">EN</a>
+      <span aria-hidden="true">/</span>
+      <a href={deLink} aria-current={isDe ? "page" : undefined} hreflang="de" lang="de" data-set-lang="de">DE</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll('[data-set-lang]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const lang = link.getAttribute('data-set-lang');
+      if (lang) {
+        localStorage.setItem('preferred-lang', lang);
+      }
+    });
+  });
+</script>
