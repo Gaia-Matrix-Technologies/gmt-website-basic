@@ -33,7 +33,7 @@ import { LOCALIZED_COUNTRY_NAMES } from '../../data/languages.mjs';
                 CEO &amp; Co-Founder<br />
                 {company.address.street}<br />
                 {company.address.postalCode} {company.address.city}<br />
-                {LOCALIZED_COUNTRY_NAMES.en}
+                {company.address.country.en}
               </p>
             </article>
 
@@ -51,7 +51,7 @@ import { LOCALIZED_COUNTRY_NAMES } from '../../data/languages.mjs';
               <p>
                 Registered in the Commercial Register.<br />
                 <strong>Register Court / Canton:</strong> Commercial Registry of the Canton of Zurich<br />
-                <strong>Registration Number / Company ID:</strong> [HRA / Company ID - Placeholder]<br />
+                <strong>Registration Number / Company ID:</strong> {company.registrationNumber}<br />
                 <strong>Legal Form:</strong> Corporation (Aktiengesellschaft / AG)
               </p>
             </article>
@@ -60,7 +60,7 @@ import { LOCALIZED_COUNTRY_NAMES } from '../../data/languages.mjs';
               <h2>VAT / Business Identification Number (UID)</h2>
               <p>
                 VAT Identification Number / Swiss Business Identification Number (UID):<br />
-                [CHE-xxx.xxx.xxx MWST / Placeholder]
+                {company.vatId}
               </p>
             </article>
 
