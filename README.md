@@ -9,9 +9,10 @@ Modern, fast, and responsive website for **Gaia Matrix Technologies AG** built w
 - **🚀 Lightning Fast SSG**: Built with Astro 5 for maximum performance and optimal SEO.
 - **🌐 Multilingual Support (i18n)**:
   - English (`/en`) & German (`/de`) localized routes.
-  - Root route (`/`) automatically detects browser language and redirects to preferred locale.
-  - Remembers user's manual language selection via `localStorage`.
+  - Root route (`/`) detects the browser language and redirects to a supported locale, falling back to English.
+  - Language switcher preserves the current page when moving between locales.
 - **📜 Legal Subpages**: Standalone `Impressum` and `Datenschutzerklärung` (Privacy Policy) pages in both languages.
+- **🏢 Centralized Company Data**: Contact details, address, registration number, and VAT ID are maintained in one data file.
 - **🎨 Responsive CSS**: Custom dark-mode design with fluid layout, grid auto-fit reflowing, and styled components.
 - **🚢 Deploy Ready**: Pre-configured for hosting on Render, Netlify, Vercel, or any static host.
 
@@ -27,6 +28,9 @@ Modern, fast, and responsive website for **Gaia Matrix Technologies AG** built w
 │   │   ├── Backdrop.astro   # Animated background grid & glow orbs
 │   │   ├── Header.astro     # Sticky navigation & language switcher
 │   │   └── Footer.astro     # Extensible 4-column footer
+│   ├── data/
+│   │   ├── company.json     # Shared company and legal identifiers
+│   │   └── languages.mjs    # Locale labels and path helpers
 │   ├── layouts/
 │   │   └── Layout.astro     # Base HTML shell & global scripts
 │   ├── pages/
