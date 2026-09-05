@@ -1,40 +1,62 @@
 ---
+import company from '../data/company.json';
+import {
+  DEFAULT_LANGUAGE,
+  LANGUAGE_LABELS,
+  LANGUAGE_SWITCHER_LABELS,
+  SUPPORTED_LANGUAGES,
+  getLocalizedPath,
+  getSupportedLanguage,
+} from '../data/languages.mjs';
+
 interface Props {
-  currentLang?: 'en' | 'de';
-  pagePath?: string;
+  currentLang?: string;
 }
 
-const { currentLang = 'en', pagePath } = Astro.props;
+type Language = keyof typeof LANGUAGE_LABELS;
 
-const isDe = currentLang === 'de';
-const homePath = `/${currentLang}`;
+const { currentLang = DEFAULT_LANGUAGE } = Astro.props;
 
-const navLinks = isDe
-  ? [
+const defaultLanguage = DEFAULT_LANGUAGE as Language;
+const currentLanguage = getSupportedLanguage(currentLang) as Language;
+const homePath = `/${currentLanguage}`;
+
+const navLinksByLanguage = {
+  de: [
       { href: `${homePath}#vision`, label: 'Vision' },
       { href: `${homePath}#technologies`, label: 'Technologien' },
       { href: `${homePath}#independence`, label: 'Energieunabhängigkeit' },
       { href: `${homePath}#nda`, label: 'Technische Evidenz' },
       { href: `${homePath}#contact`, label: 'Kontakt' },
-    ]
-  : [
+    ],
+  en: [
       { href: `${homePath}#vision`, label: 'Vision' },
       { href: `${homePath}#technologies`, label: 'Technologies' },
       { href: `${homePath}#independence`, label: 'Energy Independence' },
       { href: `${homePath}#nda`, label: 'Technical Evidence' },
       { href: `${homePath}#contact`, label: 'Contact' },
-    ];
+    ],
+} as const;
 
-const subPath = pagePath ? pagePath.replace(/^\/(en|de)/, '') : '';
-const enLink = `/en${subPath}`;
-const deLink = `/de${subPath}`;
+const navLinks = navLinksByLanguage[currentLanguage] ?? navLinksByLanguage[defaultLanguage];
+const languageSwitcherLabel = LANGUAGE_SWITCHER_LABELS[currentLanguage] ?? LANGUAGE_SWITCHER_LABELS[defaultLanguage];
+const languageLinks = SUPPORTED_LANGUAGES.map((language) => {
+  const languageCode = language as Language;
+
+  return {
+    href: getLocalizedPath(languageCode, Astro.url.pathname),
+    isCurrent: languageCode === currentLanguage,
+    label: LANGUAGE_LABELS[languageCode],
+    language: languageCode,
+  };
+});
 ---
 
 <header class="nav">
   <div class="content nav-inner">
     <a class="brand" href={`${homePath}#top`}>
       <span class="brand-mark" aria-hidden="true"></span>
-      Gaia Matrix Technologies
+      {company.brandName}
     </a>
 
     <ul class="nav-links">
@@ -43,21 +65,21 @@ const deLink = `/de${subPath}`;
       ))}
     </ul>
 
-    <nav class="language-switcher" aria-label={isDe ? "Sprache auswählen" : "Select language"}>
-      <a href={enLink} aria-current={!isDe ? "page" : undefined} hreflang="en" lang="en" data-set-lang="en">EN</a>
-      <span aria-hidden="true">/</span>
-      <a href={deLink} aria-current={isDe ? "page" : undefined} hreflang="de" lang="de" data-set-lang="de">DE</a>
+    <nav class="language-switcher" aria-label={languageSwitcherLabel}>
+      {languageLinks.map((link, index) => (
+        <>
+          {index > 0 && <span aria-hidden="true">/</span>}
+          <a
+            href={link.href}
+            aria-current={link.isCurrent ? "page" : undefined}
+            hreflang={link.language}
+            lang={link.language}
+            data-set-lang={link.language}
+          >
+            {link.label}
+          </a>
+        </>
+      ))}
     </nav>
   </div>
 </header>
-
-<script>
-  document.querySelectorAll('[data-set-lang]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const lang = link.getAttribute('data-set-lang');
-      if (lang) {
-        localStorage.setItem('preferred-lang', lang);
-      }
-    });
-  });
-</script>

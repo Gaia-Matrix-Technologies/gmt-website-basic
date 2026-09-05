@@ -3,13 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import Backdrop from '../../components/Backdrop.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import company from '../../data/company.json';
+import { LOCALIZED_COUNTRY_NAMES } from '../../data/languages.mjs';
 ---
 
-<Layout title="Privacy Policy & Legal Terms | GMT Gaia Matrix Technologies AG" lang="en">
+<Layout title={`Privacy Policy & Legal Terms | ${company.legalName}`} lang="en">
   <Backdrop />
 
   <div class="page" id="top">
-    <Header currentLang="en" pagePath="/en/legal" />
+    <Header currentLang="en" />
 
     <main>
       <section class="section">
@@ -19,7 +21,7 @@ import Footer from '../../components/Footer.astro';
               <p class="meta">Legal / Privacy Policy</p>
               <h1>Privacy Policy &amp; Legal Terms</h1>
               <p class="doc-lead">
-                Information regarding the collection, processing, and protection of your personal data when visiting the website of GMT Gaia Matrix Technologies AG.
+                Information regarding the collection, processing, and protection of your personal data when visiting the website of {company.legalName}.
               </p>
             </header>
 
@@ -35,7 +37,7 @@ import Footer from '../../components/Footer.astro';
               <h3>Data Collection on Our Website</h3>
               <p>
                 <strong>Who is responsible for data collection on this website?</strong><br />
-                Data processing on this website is carried out by the website operator, GMT Gaia Matrix Technologies AG. You can find its contact details in the <a href="/en/impressum" class="link">Impressum</a> of this website.
+                Data processing on this website is carried out by the website operator, {company.legalName}. You can find its contact details in the <a href="/en/impressum" class="link">Impressum</a> of this website.
               </p>
 
               <p>
@@ -82,11 +84,11 @@ import Footer from '../../components/Footer.astro';
                 The responsible party for data processing on this website is:
               </p>
               <p>
-                <strong>GMT Gaia Matrix Technologies AG</strong><br />
-                Gerlinde Jacobs M.A., CEO<br />
-                Max-Högger-Strasse 6<br />
-                8048 Zürich, Switzerland<br /><br />
-                <strong>Email:</strong> <a href="mailto:gerlinde.jacobs@gaiamatrixtech.com" class="link">gerlinde.jacobs@gaiamatrixtech.com</a>
+                <strong>{company.legalName}</strong><br />
+                {company.contact.formalName}, CEO<br />
+                {company.address.street}<br />
+                {company.address.postalCode} {company.address.city}, {LOCALIZED_COUNTRY_NAMES.en}<br /><br />
+                <strong>Email:</strong> <a href={`mailto:${company.contact.email}`} class="link">{company.contact.email}</a>
               </p>
               <p>
                 The responsible party is the natural or legal person who alone or jointly with others decides on the purposes and means of processing personal data (e.g., names, email addresses, etc.).

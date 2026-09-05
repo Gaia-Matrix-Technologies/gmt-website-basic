@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import company from '../data/company.json';
+import { DEFAULT_LANGUAGE, getSupportedLanguage } from '../data/languages.mjs';
 
 interface Props {
   title: string;
@@ -8,14 +10,34 @@ interface Props {
 }
 
 const {
-  title = "Gaia Matrix Technologies AG | Energie neu gedacht",
+  title = `${company.displayName} | Energie neu gedacht`,
   description = "Gaia Matrix Technologies AG entwickelt nanotechnologische Energiesysteme für Photovoltaik, Leuchttechnologie, Heizung und Energiespeicherung.",
-  lang = "de",
+  lang = DEFAULT_LANGUAGE,
 } = Astro.props;
+
+const toastMessagesByLanguage = {
+  de: {
+    initial: "Ihre Anfrage wurde vermerkt.",
+    sectionOpened: "Bereich geöffnet.",
+    requestNoted: "Vielen Dank. Ihre Anfrage wurde vermerkt.",
+  },
+  en: {
+    initial: "Your request has been noted.",
+    sectionOpened: "Section opened.",
+    requestNoted: "Thank you. Your request has been noted.",
+  },
+} as const;
+
+const currentLanguage = getSupportedLanguage(lang) as keyof typeof toastMessagesByLanguage;
+const toastMessages = toastMessagesByLanguage[currentLanguage] ?? toastMessagesByLanguage[DEFAULT_LANGUAGE as keyof typeof toastMessagesByLanguage];
+
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
+const plausibleScriptSrc = import.meta.env.PUBLIC_PLAUSIBLE_SCRIPT_SRC ?? "https://plausible.io/js/script.js";
 ---
 
 <!DOCTYPE html>
-<html lang={lang}>
+<html lang={currentLanguage}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,12 +58,34 @@ const {
     href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
+
+  {gaMeasurementId && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
+      <script define:vars={{ gaMeasurementId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag("js", new Date());
+        gtag("config", gaMeasurementId);
+      </script>
+    </>
+  )}
+
+  {plausibleDomain && (
+    <script defer data-domain={plausibleDomain} src={plausibleScriptSrc}></script>
+  )}
 </head>
 <body>
   <slot />
 
-  <div class="toast" id="toast" role="status">
-    Your request has been noted.
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    data-section-message={toastMessages.sectionOpened}
+    data-submit-message={toastMessages.requestNoted}
+  >
+    {toastMessages.initial}
   </div>
 
   <script>
@@ -67,7 +111,7 @@ const {
         const target = link.getAttribute("href");
 
         if (target === "#nda" || target === "#contact") {
-          showToast("Section opened.");
+          showToast(toast?.dataset.sectionMessage ?? "Section opened.");
         }
       });
     });
@@ -77,7 +121,7 @@ const {
         event.preventDefault();
 
         showToast(
-          "Thank you. Your request has been noted.",
+          toast?.dataset.submitMessage ?? "Thank you. Your request has been noted.",
           3500
         );
       });

@@ -3,13 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import Backdrop from '../../components/Backdrop.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import company from '../../data/company.json';
+import { LOCALIZED_COUNTRY_NAMES } from '../../data/languages.mjs';
 ---
 
-<Layout title="Datenschutzerklärung & Rechtliche Hinweise | GMT Gaia Matrix Technologies AG" lang="de">
+<Layout title={`Datenschutzerklärung & Rechtliche Hinweise | ${company.legalName}`} lang="de">
   <Backdrop />
 
   <div class="page" id="top">
-    <Header currentLang="de" pagePath="/de/legal" />
+    <Header currentLang="de" />
 
     <main>
       <section class="section">
@@ -19,7 +21,7 @@ import Footer from '../../components/Footer.astro';
               <p class="meta">Rechtliches / Datenschutz</p>
               <h1>Datenschutzerklärung</h1>
               <p class="doc-lead">
-                Informationen über die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten beim Besuch der Website der GMT Gaia Matrix Technologies AG.
+                Informationen über die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten beim Besuch der Website der {company.legalName}.
               </p>
             </header>
 
@@ -35,7 +37,7 @@ import Footer from '../../components/Footer.astro';
               <h3>Datenerfassung auf unserer Website</h3>
               <p>
                 <strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br />
-                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber GMT Gaia Matrix Technologies AG. Dessen Kontaktdaten können Sie dem <a href="/de/impressum" class="link">Impressum</a> dieser Website entnehmen.
+                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber {company.legalName}. Dessen Kontaktdaten können Sie dem <a href="/de/impressum" class="link">Impressum</a> dieser Website entnehmen.
               </p>
 
               <p>
@@ -82,11 +84,11 @@ import Footer from '../../components/Footer.astro';
                 Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
               </p>
               <p>
-                <strong>GMT Gaia Matrix Technologies AG</strong><br />
-                Gerlinde Jacobs M.A., CEO<br />
-                Max-Högger-Strasse 6<br />
-                8048 Zürich, Schweiz<br /><br />
-                <strong>E-Mail:</strong> <a href="mailto:gerlinde.jacobs@gaiamatrixtech.com" class="link">gerlinde.jacobs@gaiamatrixtech.com</a>
+                <strong>{company.legalName}</strong><br />
+                {company.contact.formalName}, CEO<br />
+                {company.address.street}<br />
+                {company.address.postalCode} {company.address.city}, {LOCALIZED_COUNTRY_NAMES.de}<br /><br />
+                <strong>E-Mail:</strong> <a href={`mailto:${company.contact.email}`} class="link">{company.contact.email}</a>
               </p>
               <p>
                 Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z.B. Namen, E-Mail-Adressen o. Ä.) entscheidet.

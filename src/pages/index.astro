@@ -1,38 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import company from '../data/company.json';
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../data/languages.mjs';
 ---
 
-<Layout title="Gaia Matrix Technologies AG" lang="en">
-  <script is:inline>
+<Layout title={company.displayName} lang={DEFAULT_LANGUAGE}>
+  <script define:vars={{ defaultLanguage: DEFAULT_LANGUAGE, supportedLanguages: SUPPORTED_LANGUAGES }}>
     (function () {
       try {
         const savedLang = localStorage.getItem('preferred-lang');
-        if (savedLang === 'de') {
-          window.location.replace('/de');
-          return;
-        } else if (savedLang === 'en') {
-          window.location.replace('/en');
+
+        if (supportedLanguages.includes(savedLang)) {
+          window.location.replace('/' + savedLang);
           return;
         }
 
         const userLangs = navigator.languages || [navigator.language || ''];
-        const isGerman = userLangs.some(function (lang) {
-          return lang.toLowerCase().startsWith('de');
+        const browserLang = userLangs.map(function (lang) {
+          return lang.toLowerCase().split('-')[0];
+        }).find(function (lang) {
+          return supportedLanguages.includes(lang);
         });
 
-        if (isGerman) {
-          window.location.replace('/de');
-        } else {
-          window.location.replace('/en');
-        }
+        window.location.replace('/' + (browserLang || defaultLanguage));
       } catch (e) {
-        window.location.replace('/en');
+        window.location.replace('/' + defaultLanguage);
       }
     })();
   </script>
 
   <noscript>
-    <meta http-equiv="refresh" content="0;url=/en" />
+    <meta http-equiv="refresh" content={`0;url=/${DEFAULT_LANGUAGE}`} />
   </noscript>
 
   <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #94a3b8; font-family: sans-serif;">

@@ -157,7 +157,7 @@ a {
 }
 
 .text-mono-small {
-  font: 400 .64rem/1.6 var(--mono);
+  font: 400 .66rem/1.6 var(--mono);
 }
 
 .meta {
@@ -200,7 +200,6 @@ h1 {
   font-size: clamp(2.3rem, 5vw, 4.4rem);
   font-weight: 600;
   line-height: .98;
-  max-width: 900px;
 }
 
 h2 {
@@ -217,7 +216,6 @@ h2 {
   font-size: clamp(1.9rem, 4vw, 3.3rem);
   font-weight: 600;
   line-height: 1;
-  max-width: 680px;
 }
 
 h3 {
@@ -461,6 +459,7 @@ h3 {
 .action.ghost:hover {
   color: var(--green-hot);
   transform: translateX(3px);
+  border-bottom-color: var(--green-hot);
 }
 
 .stats {
@@ -497,7 +496,7 @@ h3 {
 --------------------------------------- */
 
 .instrument {
-  border-bottom: 1px solid var(--divider);
+  border-bottom: 0px solid var(--divider);
   border-top: 1px solid var(--divider);
   margin-top: 82px;
   padding: 27px 0;
@@ -513,7 +512,7 @@ h3 {
 .instrument-label,
 .instrument-value {
   color: var(--muted);
-  font: 500 .62rem/1.65 var(--mono);
+  font: 500 .64rem/1.65 var(--mono);
   text-transform: uppercase;
 }
 
@@ -747,7 +746,7 @@ h3 {
 
 .row span {
   color: var(--muted);
-  font: 500 .64rem/1.5 var(--mono);
+  font: 500 .66rem/1.5 var(--mono);
   text-transform: uppercase;
 }
 
@@ -792,7 +791,7 @@ td {
 
 th {
   color: var(--muted);
-  font: 600 .62rem/1.4 var(--mono);
+  font: 600 .64rem/1.4 var(--mono);
   letter-spacing: .12em;
   text-transform: uppercase;
 }
@@ -911,7 +910,7 @@ blockquote {
 
 .point span {
   color: var(--cyan);
-  font: 600 .62rem/1.5 var(--mono);
+  font: 600 .64rem/1.5 var(--mono);
   text-transform: uppercase;
 }
 
@@ -961,7 +960,7 @@ blockquote {
 
 .field label {
   color: var(--muted);
-  font: 600 .62rem/1.4 var(--mono);
+  font: 600 .64rem/1.4 var(--mono);
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -1052,7 +1051,7 @@ blockquote {
 
 .note {
   color: var(--muted);
-  font: 400 .62rem/1.6 var(--mono);
+  font: 400 .64rem/1.6 var(--mono);
   margin-top: 15px;
   max-width: 700px;
 }
@@ -1080,7 +1079,7 @@ blockquote {
 .contact-role {
   color: var(--cyan);
   display: block;
-  font: 600 .62rem/1.4 var(--mono);
+  font: 600 .64rem/1.4 var(--mono);
   text-transform: uppercase;
 }
 
@@ -1339,8 +1338,7 @@ textarea:focus-visible {
 
   .hero {
     min-height: auto;
-    padding-bottom: 75px;
-    padding-top: 75px;
+    padding: 75px auto;
   }
 
   h1 {

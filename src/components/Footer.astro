@@ -1,38 +1,68 @@
 ---
+import company from '../data/company.json';
+import {
+  DEFAULT_LANGUAGE,
+  LOCALIZED_CITY_NAMES,
+  LOCALIZED_COUNTRY_NAMES,
+  getSupportedLanguage,
+} from '../data/languages.mjs';
+
 interface Props {
-  currentLang?: 'en' | 'de';
+  currentLang?: string;
 }
 
-const { currentLang = 'en' } = Astro.props;
-const isDe = currentLang === 'de';
+type Language = keyof typeof LOCALIZED_COUNTRY_NAMES;
 
-const homePath = `/${currentLang}`;
+const { currentLang = DEFAULT_LANGUAGE } = Astro.props;
+const currentLanguage = getSupportedLanguage(currentLang) as Language;
+const homePath = `/${currentLanguage}`;
 
-const navigationLinks = isDe
-  ? [
+const footerContentByLanguage = {
+  de: {
+    brandDescription: "GMT entwickelt nanotechnologische Energiesysteme für Photovoltaik, Leuchttechnologie, Heizung und Speicherung.",
+    headings: {
+      navigation: "Navigation",
+      legal: "Rechtliches",
+      location: "Standort",
+    },
+    navigationLinks: [
       { href: `${homePath}#vision`, label: 'Vision' },
       { href: `${homePath}#technologies`, label: 'Technologien' },
       { href: `${homePath}#independence`, label: 'Energieunabhängigkeit' },
       { href: `${homePath}#nda`, label: 'Technische Evidenz' },
       { href: `${homePath}#contact`, label: 'Kontakt' },
-    ]
-  : [
+    ],
+    legalLinks: [
+      { href: `/${currentLanguage}/impressum`, label: 'Impressum' },
+      { href: `/${currentLanguage}/legal`, label: 'Datenschutzerklärung' },
+    ],
+    bottomTagline: "Energieunabhängigkeit / Nachhaltigkeit / Zukunft",
+  },
+  en: {
+    brandDescription: "GMT develops nanotechnology-based energy systems for photovoltaics, lighting, heating, and energy storage.",
+    headings: {
+      navigation: "Navigation",
+      legal: "Legal & Compliance",
+      location: "Location",
+    },
+    navigationLinks: [
       { href: `${homePath}#vision`, label: 'Vision' },
       { href: `${homePath}#technologies`, label: 'Technologies' },
       { href: `${homePath}#independence`, label: 'Energy Independence' },
       { href: `${homePath}#nda`, label: 'Technical Evidence' },
       { href: `${homePath}#contact`, label: 'Contact' },
-    ];
+    ],
+    legalLinks: [
+      { href: `/${currentLanguage}/impressum`, label: 'Impressum' },
+      { href: `/${currentLanguage}/legal`, label: 'Privacy Policy' },
+    ],
+    bottomTagline: "Energy Independence / Sustainability / Future",
+  },
+} as const;
 
-const legalLinks = isDe
-  ? [
-      { href: `/${currentLang}/impressum`, label: 'Impressum' },
-      { href: `/${currentLang}/legal`, label: 'Datenschutzerklärung' },
-    ]
-  : [
-      { href: `/${currentLang}/impressum`, label: 'Impressum' },
-      { href: `/${currentLang}/legal`, label: 'Privacy Policy' },
-    ];
+const footerContent = footerContentByLanguage[currentLanguage as Language] ?? footerContentByLanguage[DEFAULT_LANGUAGE as Language];
+const footerCity = LOCALIZED_CITY_NAMES[currentLanguage] ?? company.address.city;
+const footerCountry = LOCALIZED_COUNTRY_NAMES[currentLanguage] ?? LOCALIZED_COUNTRY_NAMES[DEFAULT_LANGUAGE];
 ---
 
 <footer class="footer-extensible">
@@ -42,20 +72,18 @@ const legalLinks = isDe
       <div class="footer-col brand-col">
         <a class="brand" href={`${homePath}#top`}>
           <span class="brand-mark" aria-hidden="true"></span>
-          Gaia Matrix Technologies
+          {company.brandName}
         </a>
         <p class="brand-desc">
-          {isDe
-            ? "GMT entwickelt nanotechnologische Energiesysteme für Photovoltaik, Leuchttechnologie, Heizung und Speicherung."
-            : "GMT develops nanotechnology-based energy systems for photovoltaics, lighting, heating, and energy storage."}
+          {footerContent.brandDescription}
         </p>
       </div>
 
       <!-- Navigation Column -->
       <div class="footer-col">
-        <span class="footer-heading">{isDe ? 'Navigation' : 'Navigation'}</span>
+        <span class="footer-heading">{footerContent.headings.navigation}</span>
         <ul class="footer-links">
-          {navigationLinks.map((link) => (
+          {footerContent.navigationLinks.map((link) => (
             <li><a href={link.href}>{link.label}</a></li>
           ))}
         </ul>
@@ -63,9 +91,9 @@ const legalLinks = isDe
 
       <!-- Legal & Compliance Column -->
       <div class="footer-col">
-        <span class="footer-heading">{isDe ? 'Rechtliches' : 'Legal & Compliance'}</span>
+        <span class="footer-heading">{footerContent.headings.legal}</span>
         <ul class="footer-links">
-          {legalLinks.map((link) => (
+          {footerContent.legalLinks.map((link) => (
             <li><a href={link.href}>{link.label}</a></li>
           ))}
         </ul>
@@ -73,20 +101,20 @@ const legalLinks = isDe
 
       <!-- Location Column -->
       <div class="footer-col">
-        <span class="footer-heading">{isDe ? 'Standort' : 'Location'}</span>
+        <span class="footer-heading">{footerContent.headings.location}</span>
         <p class="footer-location">
-          GMT Gaia Matrix Technologies AG<br />
-          Max-Högger-Strasse 6<br />
-          8048 Zürich, Switzerland
+          {company.legalName}<br />
+          {company.address.street}<br />
+          {company.address.postalCode} {footerCity}, {footerCountry}
         </p>
       </div>
     </div>
 
     <!-- Bottom Bar -->
     <div class="footer-bottom">
-      <span>&copy; {new Date().getFullYear()} Gaia Matrix Technologies AG / Zurich</span>
+      <span>&copy; {new Date().getFullYear()} {company.displayName} / {footerCity}</span>
       <span>
-        {isDe ? "Energieunabhängigkeit / Nachhaltigkeit / Zukunft" : "Energy Independence / Sustainability / Future"}
+        {footerContent.bottomTagline}
       </span>
     </div>
   </div>

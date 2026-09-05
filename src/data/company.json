@@ -1,0 +1,20 @@
+{
+  "brandName": "Gaia Matrix Technologies",
+  "displayName": "Gaia Matrix Technologies AG",
+  "shortName": "GMT",
+  "legalName": "GMT Gaia Matrix Technologies AG",
+  "contact": {
+    "name": "Gerlinde Jacobs",
+    "formalName": "Gerlinde Jacobs M.A.",
+    "email": "Gerlinde.Jacobs@web.de"
+  },
+  "address": {
+    "street": "Max-Högger-Strasse 6",
+    "postalCode": "8048",
+    "city": "Zürich"
+  },
+  "website": {
+    "display": "www.gaiamatrixtech.com",
+    "url": "https://www.gaiamatrixtech.com"
+  }
+}

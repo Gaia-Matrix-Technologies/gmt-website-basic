@@ -3,9 +3,11 @@ import Layout from '../../layouts/Layout.astro';
 import Backdrop from '../../components/Backdrop.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import company from '../../data/company.json';
+import { LOCALIZED_COUNTRY_NAMES } from '../../data/languages.mjs';
 ---
 
-<Layout title="Gaia Matrix Technologies AG | Energy rethought" lang="en">
+<Layout title={`${company.displayName} | Energy rethought`} lang="en">
   <Backdrop />
 
   <div class="page" id="top">
@@ -414,7 +416,7 @@ import Footer from '../../components/Footer.astro';
             </blockquote>
 
             <cite>
-              Gaia Matrix Technologies AG / Future Vision
+              {company.displayName} / Future Vision
             </cite>
           </div>
         </div>
@@ -889,14 +891,14 @@ import Footer from '../../components/Footer.astro';
               </span>
 
               <h3>
-                Gerlinde Jacobs
+                {company.contact.name}
               </h3>
 
               <p class="address">
-                GMT Gaia Matrix Technologies AG<br>
-                Max-Högger-Strasse 6<br>
-                8048 Zürich<br>
-                Switzerland
+                {company.legalName}<br>
+                {company.address.street}<br>
+                {company.address.postalCode} {company.address.city}<br>
+                {LOCALIZED_COUNTRY_NAMES.en}
               </p>
             </article>
           </div>
@@ -917,10 +919,10 @@ import Footer from '../../components/Footer.astro';
               </h2>
 
               <p>
-                GMT Gaia Matrix Technologies AG<br>
-                Max-Högger-Strasse 6<br>
-                8048 Zürich<br>
-                Switzerland
+                {company.legalName}<br>
+                {company.address.street}<br>
+                {company.address.postalCode} {company.address.city}<br>
+                {LOCALIZED_COUNTRY_NAMES.en}
               </p>
 
               <div class="actions" style="margin-top: 24px;">

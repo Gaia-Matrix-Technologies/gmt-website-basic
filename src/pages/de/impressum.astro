@@ -3,13 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import Backdrop from '../../components/Backdrop.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import company from '../../data/company.json';
+import { LOCALIZED_COUNTRY_NAMES } from '../../data/languages.mjs';
 ---
 
-<Layout title="Impressum | GMT Gaia Matrix Technologies AG" lang="de">
+<Layout title={`Impressum | ${company.legalName}`} lang="de">
   <Backdrop />
 
   <div class="page" id="top">
-    <Header currentLang="de" pagePath="/de/impressum" />
+    <Header currentLang="de" />
 
     <main>
       <section class="section">
@@ -26,20 +28,20 @@ import Footer from '../../components/Footer.astro';
             <article class="doc-section">
               <h2>Angaben gemäß § 5 TMG / Betreiber der Website</h2>
               <p>
-                <strong>GMT Gaia Matrix Technologies AG</strong><br />
-                Gerlinde Jacobs M.A.<br />
+                <strong>{company.legalName}</strong><br />
+                {company.contact.formalName}<br />
                 CEO &amp; Co-Gründerin<br />
-                Max-Högger-Strasse 6<br />
-                8048 Zürich<br />
-                Schweiz
+                {company.address.street}<br />
+                {company.address.postalCode} {company.address.city}<br />
+                {LOCALIZED_COUNTRY_NAMES.de}
               </p>
             </article>
 
             <article class="doc-section">
               <h2>Kontakt</h2>
               <p>
-                <strong>E-Mail:</strong> <a href="mailto:gerlinde.jacobs@gaiamatrixtech.com" class="link">gerlinde.jacobs@gaiamatrixtech.com</a><br />
-                <strong>Website:</strong> <a href="/de" class="link">www.gaiamatrixtech.com</a><br />
+                <strong>E-Mail:</strong> <a href={`mailto:${company.contact.email}`} class="link">{company.contact.email}</a><br />
+                <strong>Website:</strong> <a href="/de" class="link">{company.website.display}</a><br />
                 <strong>Kontaktformular:</strong> <a href="/de#nda" class="link">Zugang anfragen / NDA-Bereich</a>
               </p>
             </article>
